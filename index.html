@@ -9,67 +9,81 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: linear-gradient(135deg, #1e1e2f, #2c2c54);
+      background: #1e1e2f;
       font-family: 'Segoe UI', Arial, sans-serif;
       color: #f0f0f0;
-      overflow: hidden;
     }
     .loading {
       text-align: center;
-      animation: fadeIn 2s ease-in-out;
-    }
-    .spinner {
-      border: 6px solid rgba(255, 255, 255, 0.2);
-      border-top: 6px solid #00d9ff;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1s linear infinite;
-      margin: 20px auto;
-      box-shadow: 0 0 15px #00d9ff;
+      width: 300px;
+      animation: fadeIn 1.5s ease-in-out;
     }
     h2 {
-      font-size: 1.8em;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
+      font-size: 1.6em;
+      margin-bottom: 15px;
     }
-    p {
-      font-size: 1em;
-      color: #ccc;
+    .progress-bar {
+      width: 100%;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 20px 0;
     }
-    .caption {
-      font-style: italic;
-      color: #00d9ff;
-      margin-top: 15px;
-      animation: glow 2s ease-in-out infinite alternate;
+    .progress {
+      height: 12px;
+      width: 0;
+      background: linear-gradient(90deg, #00d9ff, #00ff88);
+      animation: loadProgress 10s linear forwards;
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .status {
+      font-size: 0.9em;
+      color: #aaa;
+      margin-top: 10px;
+      min-height: 20px;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes glow {
-      from { text-shadow: 0 0 5px #00d9ff; }
-      to { text-shadow: 0 0 20px #00d9ff; }
+    @keyframes loadProgress {
+      from { width: 0; }
+      to { width: 100%; }
     }
   </style>
 </head>
 <body>
   <div class="loading">
     <h2>Loading Portfolio...</h2>
-    <div class="spinner"></div>
-    <p>Please wait while content is being prepared.</p>
-    <p class="caption">Fetching my *real* portfolio… 😅</p>
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+    <p class="status" id="status">Initializing...</p>
   </div>
 
   <script>
+    // Change status messages over time
+    const messages = [
+      "Initializing...",
+      "Fetching projects...",
+      "Loading images...",
+      "Preparing resume...",
+      "Finalizing portfolio..."
+    ];
+    let i = 0;
+    const statusEl = document.getElementById("status");
+    const interval = setInterval(() => {
+      i++;
+      if (i < messages.length) {
+        statusEl.textContent = messages[i];
+      } else {
+        clearInterval(interval);
+      }
+    }, 2000); // change message every 2 seconds
+
     // Redirect after 10 seconds
     setTimeout(function() {
       window.location.href = "https://shopee.ph/LONG-SHORT-PORTFOLIO-CLEAR-BOOK-FOLDER-i.125174909.7345185208"; 
-    }, 10000); // 10 seconds
+    }, 10000);
   </script>
 </body>
 </html>
