@@ -1,9 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta http-equiv="refresh" content="0; url=https://imgflip.com/i/10akrp" />
+  <meta charset="UTF-8">
   <title>Portfolio</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+    .loading {
+      text-align: center;
+    }
+    .spinner {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #3498db;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+  <script>
+    // Redirect after 3 seconds
+    setTimeout(function() {
+      window.location.href = "https://imgflip.com/i/10akrp"; // prank image link
+    }, 3000);
+  </script>
 </head>
 <body>
+  <div class="loading">
+    <h2>Loading Portfolio...</h2>
+    <div class="spinner"></div>
+    <p>Please wait while content is being prepared.</p>
+  </div>
 </body>
 </html>
